@@ -1,0 +1,109 @@
+{"rUK 2023-24": 
+    {"income tax": [
+        {"name": "basic", "rate": 0.2, "threshold": 37700},
+        {"name": "higher", "rate": 0.4, "threshold": 125140},
+        {"name": "additional", "rate": 0.45}
+    ],
+    
+    "statutory personal allowance": 12570,
+    "allowance withdrawal threshold": 100000,
+    "allowance withdrawal rate": 0.50,
+    
+    "child benefit": {"1st": 24, "subsequent": 15.90},
+    "HICBC start": 50000, "HICBC end": 60000,
+    
+    "childcare subsidy per child": 10000,
+    "childcare min earnings": 7904, 
+    "childcare max earnings": 100000,
+    "childcare max children": 2,
+    
+    "NI": [
+        {"name": "below primary threshold", "rate": 0, "threshold": 12570},
+        {"name": "primary threshold", "rate": 0.10, "threshold": 50270},
+        {"name": "upper earnings limit", "rate": 0.02}
+    ]
+    },
+        
+"rUK 2024-25": 
+    {"income tax": [
+        {"name": "basic", "rate": 0.2, "threshold": 37700},
+        {"name": "higher", "rate": 0.4, "threshold": 125140},
+        {"name": "additional", "rate": 0.45}
+    ],
+    
+    "statutory personal allowance": 12570,
+    "allowance withdrawal threshold": 100000,
+    "allowance withdrawal rate": 0.50,
+    
+    "child benefit": {"1st": 25.60, "subsequent": 16.95},
+    "HICBC start": 60000, "HICBC end": 80000,
+    
+    "childcare subsidy per child": 10000,
+    "childcare min earnings": 7904, 
+    "childcare max earnings": 100000,
+    "childcare max children": 2,
+    
+    "NI": [
+        {"name": "below primary threshold", "rate": 0, "threshold": 12570},
+        {"name": "primary threshold", "rate": 0.08, "threshold": 50270},
+        {"name": "upper earnings limit", "rate": 0.02}
+    ]
+    },
+
+"Scot 2023-24": 
+    {"income tax": [
+        {"name": "starter", "rate": 0.19, "threshold": 2161},
+        {"name": "basic", "rate": 0.20, "threshold": 13117},
+        {"name": "intermediate", "rate": 0.21, "threshold": 31090},
+        {"name": "higher", "rate": 0.42, "threshold": 125140},
+        {"name": "top", "rate": 0.47}
+    ],
+    
+    "statutory personal allowance": 12570,
+    "allowance withdrawal threshold": 100000,
+    "allowance withdrawal rate": 0.50,
+    
+    "child benefit": {"1st": 25.60, "subsequent": 16.95},
+    "HICBC start": 60000, "HICBC end": 80000,
+    
+    "childcare subsidy per child": 10000,
+    "childcare min earnings": 7904, 
+    "childcare max earnings": 100000,
+    "childcare max children": 2,
+    
+    "NI": [
+        {"name": "below primary threshold", "rate": 0, "threshold": 12570},
+        {"name": "primary threshold", "rate": 0.08, "threshold": 50270},
+        {"name": "upper earnings limit", "rate": 0.02}
+    ]
+    },
+
+"Scot 2024-25": 
+    {"income tax": [
+        {"name": "starter", "rate": 0.19, "threshold": 2306},
+        {"name": "basic", "rate": 0.20, "threshold": 13990},
+        {"name": "intermediate", "rate": 0.21, "threshold": 31090},
+        {"name": "higher", "rate": 0.42, "threshold": 62430},
+        {"name": "advanced", "rate": 0.45, "threshold": 125140},
+        {"name": "top", "rate": 0.48}
+    ],
+    
+    "statutory personal allowance": 12570,
+    "allowance withdrawal threshold": 100000,
+    "allowance withdrawal rate": 0.50,
+    
+    "child benefit": {"1st": 25.60, "subsequent": 16.95},
+    "HICBC start": 60000, "HICBC end": 80000,
+    
+    "childcare subsidy per child": 10000,
+    "childcare min earnings": 7904, 
+    "childcare max earnings": 100000,
+    "childcare max children": 2,
+    
+    "NI": [
+        {"name": "below primary threshold", "rate": 0, "threshold": 12570},
+        {"name": "primary threshold", "rate": 0.08, "threshold": 50270},
+        {"name": "upper earnings limit", "rate": 0.02}
+    ]
+    }
+}
