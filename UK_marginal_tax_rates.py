@@ -185,7 +185,7 @@ if __name__ == '__main__':
                     yaxis_title_font=dict(size=18), 
                     hovermode='x',
                     images=logo_layout,
-                    legend=dict(orientation="h", yanchor="top", y=0.95, xanchor="center", x=0.5)
+                    legend=dict(orientation="h", yanchor="top", y=-0.075, xanchor="center", x=0.5, bordercolor="Black", borderwidth=1)
                     )
     
     # if we're not modelling marriage allowance or childcare then set y axis limit to 90%
@@ -226,7 +226,7 @@ if __name__ == '__main__':
                         yaxis_title_font=dict(size=18), 
                         hovermode='x',
                         images=logo_layout,
-                        legend=dict(orientation="h", yanchor="top", y=0.95, xanchor="center", x=0.5)
+                        legend=dict(orientation="h", yanchor="top", y=-0.075, xanchor="center", x=0.5, bordercolor="Black", borderwidth=1)
                     )
         fig_net_income.show()
         
