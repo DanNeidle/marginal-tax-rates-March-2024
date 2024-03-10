@@ -18,9 +18,9 @@ STUDENT_LOAN_THRESHOLD = 27295 # this is plan two, started course between 1 Sept
 INCLUDE_CHILD_BENEFIT = True
 CHILDREN = 3
 
-INCLUDE_CHILDCARE = False  # note if childcare subsidies are modelled it blows up all other marginal rate effects.
-PLOT_GROSS_VS_NET = True   # highly recommended if showing childcare subsidy
-
+INCLUDE_CHILDCARE = False  # note if childcare subsidies are modelled it swamps all other marginal rate effects.
+INCLUDE_MARRIAGE_ALLOWANCE = False   # also swamps all other marginal rate effects
+PLOT_GROSS_VS_NET = False   # highly recommended if showing childcare subsidy or marriage allowance
 
 # Constants
 RESOLUTION = 100        # the amount by which gross salary is incremented
@@ -66,9 +66,12 @@ def calculate_tax_and_ni(gross_income, country_and_year, tax_type, do_child_bene
     # tweaks for income tax
     if tax_type == "income tax":
         
-        # deal with personal allowance taper
+        # deal with personal allowance taper and marriage allowance
         if gross_income > relevant_data["allowance withdrawal threshold"]:
             modified_personal_allowance = max(0, relevant_data["statutory personal allowance"] - relevant_data["allowance withdrawal rate"] * (gross_income - relevant_data["allowance withdrawal threshold"]))
+        
+        elif INCLUDE_MARRIAGE_ALLOWANCE and gross_income < relevant_data["marriage allowance max earnings"]:
+            modified_personal_allowance = relevant_data["statutory personal allowance"] * (1 + relevant_data["marriage allowance"])
         else:
             modified_personal_allowance = relevant_data["statutory personal allowance"]
             
@@ -183,7 +186,12 @@ if __name__ == '__main__':
                     hovermode='x',
                     images=logo_layout,
                     legend=dict(orientation="h", yanchor="top", y=0.95, xanchor="center", x=0.5)
-                    ).update_yaxes(range=[0, 90])
+                    )
+    
+    # if we're not modelling marriage allowance or childcare then set y axis limit to 90%
+    # otherwise will autoscale and so capture crazy high marginal rates
+    if (not INCLUDE_MARRIAGE_ALLOWANCE) and (not INCLUDE_CHILDCARE):
+        fig_marginal_rate.update_yaxes(range=[0, 90])
 
     fig_marginal_rate.show()
 

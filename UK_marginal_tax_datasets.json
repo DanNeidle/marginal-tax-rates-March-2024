@@ -16,6 +16,9 @@
     "childcare min earnings": 7904, 
     "childcare max earnings": 100000,
     "childcare max children": 2,
+
+    "marriage allowance": 0.10,
+    "marriage allowance max earnings": 50270,
     
     "NI": [
         {"name": "below primary threshold", "rate": 0, "threshold": 12570},
@@ -42,6 +45,9 @@
     "childcare min earnings": 7904, 
     "childcare max earnings": 100000,
     "childcare max children": 2,
+
+    "marriage allowance": 0.10,
+    "marriage allowance max earnings": 50270,
     
     "NI": [
         {"name": "below primary threshold", "rate": 0, "threshold": 12570},
@@ -70,6 +76,9 @@
     "childcare min earnings": 7904, 
     "childcare max earnings": 100000,
     "childcare max children": 2,
+
+    "marriage allowance": 0.10,
+    "marriage allowance max earnings": 43662,
     
     "NI": [
         {"name": "below primary threshold", "rate": 0, "threshold": 12570},
@@ -99,6 +108,9 @@
     "childcare min earnings": 7904, 
     "childcare max earnings": 100000,
     "childcare max children": 2,
+
+    "marriage allowance": 0.10,
+    "marriage allowance max earnings": 43662,
     
     "NI": [
         {"name": "below primary threshold", "rate": 0, "threshold": 12570},
