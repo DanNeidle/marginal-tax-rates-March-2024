@@ -159,12 +159,12 @@ if __name__ == '__main__':
         
         df = calculate_tax(dataset, False, False)
         created_data[f"{dataset}"] = df
-        fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset, visible='legendonly' if "Scot" in dataset else True))
+        fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset, visible='legendonly'))
         
         if INCLUDE_CHILD_BENEFIT:
             df = calculate_tax(dataset, True, False)
             created_data[f"{dataset} CB"] = df
-            fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset + " w/ child benefit", visible='legendonly'))
+            fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset + " w/ child benefit", visible='legendonly' if "Scot" in dataset else True))
             
         if INCLUDE_STUDENT_LOAN: 
             df = calculate_tax(dataset, True, True)
@@ -192,6 +192,9 @@ if __name__ == '__main__':
     # otherwise will autoscale and so capture crazy high marginal rates
     if (not INCLUDE_MARRIAGE_ALLOWANCE) and (not INCLUDE_CHILDCARE):
         fig_marginal_rate.update_yaxes(range=[0, 90])
+        
+    fig_marginal_rate.update_xaxes(tickprefix="£")
+    fig_marginal_rate.update_yaxes(ticksuffix="%")
 
     fig_marginal_rate.show()
 
@@ -228,6 +231,10 @@ if __name__ == '__main__':
                         images=logo_layout,
                         legend=dict(orientation="h", yanchor="top", y=-0.075, xanchor="center", x=0.5, bordercolor="Black", borderwidth=1)
                     )
+        
+        fig_net_income.update_xaxes(tickprefix="£")
+        fig_net_income.update_yaxes(tickprefix="£")
+        
         fig_net_income.show()
         
     if EXPORT_TO_EXCEL:
