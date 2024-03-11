@@ -70,7 +70,7 @@
     "allowance withdrawal rate": 0.50,
     
     "child benefit": {"1st": 25.60, "subsequent": 16.95},
-    "HICBC start": 60000, "HICBC end": 80000,
+    "HICBC start": 50000, "HICBC end": 60000,
     
     "childcare subsidy per child": 10000,
     "childcare min earnings": 7904, 
