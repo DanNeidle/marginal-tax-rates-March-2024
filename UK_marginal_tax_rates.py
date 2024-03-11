@@ -18,9 +18,9 @@ STUDENT_LOAN_THRESHOLD = 27295 # this is plan two, started course between 1 Sept
 INCLUDE_CHILD_BENEFIT = True
 CHILDREN = 3
 
-INCLUDE_CHILDCARE = False  # note if childcare subsidies are modelled it swamps all other marginal rate effects.
-INCLUDE_MARRIAGE_ALLOWANCE = False   # also swamps all other marginal rate effects
-PLOT_GROSS_VS_NET = False   # highly recommended if showing childcare subsidy or marriage allowance
+INCLUDE_CHILDCARE = True  # note if childcare subsidies are modelled it swamps all other marginal rate effects.
+INCLUDE_MARRIAGE_ALLOWANCE = True   # also swamps all other marginal rate effects
+PLOT_GROSS_VS_NET = True   # highly recommended if showing childcare subsidy or marriage allowance
 
 # Constants
 RESOLUTION = 100        # the amount by which gross salary is incremented
@@ -172,7 +172,7 @@ if __name__ == '__main__':
             fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset + " w/ child benefit and student loans", visible='legendonly'))
 
 
-    title = "Gross income vs marginal tax rate, rUK and Scotland"   
+    title = "Gross income vs marginal tax rate"   
     if INCLUDE_CHILDCARE:
         title += ", inc childcare subsidy"
 
