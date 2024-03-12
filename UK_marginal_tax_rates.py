@@ -18,8 +18,8 @@ STUDENT_LOAN_THRESHOLD = 27295 # this is plan two, started course between 1 Sept
 INCLUDE_CHILD_BENEFIT = True
 CHILDREN = 3
 
-INCLUDE_CHILDCARE = False  # note if childcare subsidies are modelled it swamps all other marginal rate effects.
-INCLUDE_MARRIAGE_ALLOWANCE = False   # also swamps all other marginal rate effects
+INCLUDE_CHILDCARE = True  # note if childcare subsidies are modelled it swamps all other marginal rate effects.
+INCLUDE_MARRIAGE_ALLOWANCE = True   # also swamps all other marginal rate effects
 PLOT_GROSS_VS_NET = True   # highly recommended if showing childcare subsidy or marriage allowance
 
 # Constants
@@ -207,7 +207,7 @@ if __name__ == '__main__':
             df = calculate_tax(dataset, INCLUDE_CHILD_BENEFIT, INCLUDE_STUDENT_LOAN)
             created_data[f"{dataset} gross v net"] = df
             
-            fig_net_income.add_trace(go.Scatter(x=df['gross income'], y=df['net income'], mode='lines', name=dataset))
+            fig_net_income.add_trace(go.Scatter(x=df['gross income'], y=df['net income'], mode='lines', name=dataset,  hovertemplate='£%{y:,.0f}'))
             
             title = 'Gross employment income vs net income'
             if INCLUDE_CHILDCARE:
