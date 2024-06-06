@@ -10,8 +10,9 @@ DATA_TO_CHART = []
 # Whether to export to Excel
 EXPORT_TO_EXCEL = False
 EXCEL_FILE = 'UK_marginal_tax_rates.xlsx'
+DEFAULT_DATASET = "rUK 2024-25"
 
-INCLUDE_STUDENT_LOAN = False
+INCLUDE_STUDENT_LOAN = True
 STUDENT_LOAN_RATE = 0.09
 STUDENT_LOAN_THRESHOLD = 27295 # this is plan two, started course between 1 September 2012 and 31 July 2023 
 
@@ -20,7 +21,7 @@ CHILDREN = 3
 
 INCLUDE_CHILDCARE = False  # note if childcare subsidies are modelled it swamps all other marginal rate effects.
 INCLUDE_MARRIAGE_ALLOWANCE = False   # also swamps all other marginal rate effects
-PLOT_GROSS_VS_NET = False   # highly recommended if showing childcare subsidy or marriage allowance
+PLOT_GROSS_VS_NET = True   # highly recommended if showing childcare subsidy or marriage allowance
 
 # Constants
 RESOLUTION = 100        # the amount by which gross salary is incremented
@@ -159,12 +160,12 @@ if __name__ == '__main__':
         
         df = calculate_tax(dataset, False, False)
         created_data[f"{dataset}"] = df
-        fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset, visible='legendonly'))
+        fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset, visible=True if dataset == DEFAULT_DATASET else 'legendonly'))
         
         if INCLUDE_CHILD_BENEFIT:
             df = calculate_tax(dataset, True, False)
             created_data[f"{dataset} CB"] = df
-            fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset + " w/ child benefit", visible='legendonly' if "Scot" in dataset else True))
+            fig_marginal_rate.add_trace(go.Scatter(x=df['gross income'], y=df['marginal rate']*100, mode='lines', name=dataset + " w/ child benefit", visible='legendonly'))
             
         if INCLUDE_STUDENT_LOAN: 
             df = calculate_tax(dataset, True, True)
@@ -204,20 +205,24 @@ if __name__ == '__main__':
         fig_net_income = go.Figure()
 
         for dataset in DATA_TO_CHART:
-            df = calculate_tax(dataset, INCLUDE_CHILD_BENEFIT, INCLUDE_STUDENT_LOAN)
+            df = calculate_tax(dataset, False, False)
             created_data[f"{dataset} gross v net"] = df
             
-            fig_net_income.add_trace(go.Scatter(x=df['gross income'], y=df['net income'], mode='lines', name=dataset,  hovertemplate='£%{y:,.0f}'))
+            fig_net_income.add_trace(go.Scatter(x=df['gross income'], y=df['net income'], mode='lines', name=dataset,  hovertemplate='£%{y:,.0f}', visible=True if dataset == DEFAULT_DATASET else 'legendonly'))
+            
+            if INCLUDE_CHILD_BENEFIT:
+                df = calculate_tax(dataset, True, False)
+                created_data[f"{dataset} gross v net"] = df
+                fig_net_income.add_trace(go.Scatter(x=df['gross income'], y=df['net income'], mode='lines', name=dataset + " w/ child benefit",  hovertemplate='£%{y:,.0f}', visible='legendonly'))
+                
+            if INCLUDE_STUDENT_LOAN: 
+                df = calculate_tax(dataset, True, True)
+                created_data[f"{dataset} gross v net"] = df
+                fig_net_income.add_trace(go.Scatter(x=df['gross income'], y=df['net income'], mode='lines', name=dataset + " w/ child benefit and student loans",  hovertemplate='£%{y:,.0f}', visible='legendonly'))
             
             title = 'Gross employment income vs net income'
             if INCLUDE_CHILDCARE:
                 title += ", inc childcare subsidy"
-                
-            if INCLUDE_CHILD_BENEFIT:
-                title += ", inc child benefit"
-                
-            if INCLUDE_STUDENT_LOAN:
-                title += ", student loan"
                 
 
         fig_net_income.update_layout(

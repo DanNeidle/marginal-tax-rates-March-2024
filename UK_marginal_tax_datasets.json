@@ -57,7 +57,7 @@
     },
 
 
-"rUK 2024-25 Tory change": 
+"rUK 2024 Tory manifesto": 
     {"income tax": [
         {"name": "basic", "rate": 0.2, "threshold": 37700},
         {"name": "higher", "rate": 0.4, "threshold": 125140},
@@ -83,6 +83,35 @@
         {"name": "below primary threshold", "rate": 0, "threshold": 12570},
         {"name": "primary threshold", "rate": 0.08, "threshold": 50270},
         {"name": "upper earnings limit", "rate": 0.02}
+    ]
+    },
+
+    "rUK 2024-25 Green manifesto": 
+    {"income tax": [
+        {"name": "basic", "rate": 0.2, "threshold": 37700},
+        {"name": "higher", "rate": 0.4, "threshold": 125140},
+        {"name": "additional", "rate": 0.45}
+    ],
+    
+    "statutory personal allowance": 12570,
+    "allowance withdrawal threshold": 100000,
+    "allowance withdrawal rate": 0.50,
+    
+    "child benefit": {"1st": 25.60, "subsequent": 16.95},
+    "HICBC start": 60000, "HICBC end": 80000,
+    
+    "childcare subsidy per child": 10000,
+    "childcare min earnings": 7904, 
+    "childcare max earnings": 100000,
+    "childcare max children": 2,
+
+    "marriage allowance": 0.10,
+    "marriage allowance max earnings": 50270,
+    
+    "NI": [
+        {"name": "below primary threshold", "rate": 0, "threshold": 12570},
+        {"name": "primary threshold", "rate": 0.08, "threshold": 50270},
+        {"name": "upper earnings limit", "rate": 0.08}
     ]
     },
 
