@@ -11,20 +11,20 @@ DATA_TO_CHART = []
 EXPORT_TO_EXCEL = False
 EXCEL_FILE = 'UK_marginal_tax_rates.xlsx'
 
-INCLUDE_STUDENT_LOAN = True
+INCLUDE_STUDENT_LOAN = False
 STUDENT_LOAN_RATE = 0.09
 STUDENT_LOAN_THRESHOLD = 27295 # this is plan two, started course between 1 September 2012 and 31 July 2023 
 
 INCLUDE_CHILD_BENEFIT = True
 CHILDREN = 3
 
-INCLUDE_CHILDCARE = True  # note if childcare subsidies are modelled it swamps all other marginal rate effects.
-INCLUDE_MARRIAGE_ALLOWANCE = True   # also swamps all other marginal rate effects
-PLOT_GROSS_VS_NET = True   # highly recommended if showing childcare subsidy or marriage allowance
+INCLUDE_CHILDCARE = False  # note if childcare subsidies are modelled it swamps all other marginal rate effects.
+INCLUDE_MARRIAGE_ALLOWANCE = False   # also swamps all other marginal rate effects
+PLOT_GROSS_VS_NET = False   # highly recommended if showing childcare subsidy or marriage allowance
 
 # Constants
 RESOLUTION = 100        # the amount by which gross salary is incremented
-MAX_INCOME = 160000  
+MAX_INCOME = 180000  
 
 DATASET_FILENAME = "UK_marginal_tax_datasets.json"
 LOGO_FILE = "logo_full_white_on_blue.jpg"
