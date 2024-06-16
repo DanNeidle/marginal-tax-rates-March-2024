@@ -59,9 +59,9 @@ def export_to_excel(dataframes):
     
 
 # Unified function to calculate tax and NI
-def calculate_tax_and_ni(gross_income, country_and_year, tax_type, do_child_benefit, do_student_loan):
+def calculate_tax_and_ni(gross_income, relevant_dataset, tax_type, do_child_benefit, do_student_loan):
     
-    relevant_data = tax_data[country_and_year]
+    relevant_data = tax_data[relevant_dataset]
     total_tax = 0
     
     # tweaks for income tax
@@ -157,6 +157,10 @@ if __name__ == '__main__':
     fig_marginal_rate = go.Figure()
 
     for dataset in DATA_TO_CHART:
+        if "exclude from chart" in tax_data[dataset]:
+            # these are hypothetical examples we don't want to include in chart, as clutters up legend
+            continue
+
         
         df = calculate_tax(dataset, False, False)
         created_data[f"{dataset}"] = df
@@ -205,6 +209,10 @@ if __name__ == '__main__':
         fig_net_income = go.Figure()
 
         for dataset in DATA_TO_CHART:
+            if "exclude from chart" in tax_data[dataset]:
+                # these are hypothetical examples we don't want to include in chart, as clutters up legend
+                continue
+            
             df = calculate_tax(dataset, False, False)
             created_data[f"{dataset} gross v net"] = df
             
