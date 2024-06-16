@@ -177,7 +177,7 @@
     
     "NI": [
         {"name": "below primary threshold", "rate": 0, "threshold": 12570},
-        {"name": "primary threshold", "rate": 0.08, "threshold": 50270},
+        {"name": "primary threshold", "rate": 0.06, "threshold": 50270},
         {"name": "upper earnings limit", "rate": 0.02}
     ]
     },
