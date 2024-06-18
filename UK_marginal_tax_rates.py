@@ -78,17 +78,30 @@ def calculate_tax_and_ni(gross_income, relevant_dataset, tax_type, do_child_bene
             
         taxable_net_income = max(0, gross_income - modified_personal_allowance)
         
-        # give child benefit (modelled as a negative tax, not technically correct but gives right result)
+        # apply HICBC. Note we don't do this quite right, because the real HICBC calculation operates in steps of 200
+        # but a discontinuous function breaks plotly, so we use a continuous function instead. 
+        # this will mean slightly too much tax is paid before each step change (<1%), but shouldn't impact the marginal rate
         if do_child_benefit and CHILDREN > 0:
             total_child_benefit = 52 * (relevant_data["child benefit"]["1st"] + relevant_data["child benefit"]["subsequent"] * (CHILDREN - 1))
             if gross_income < relevant_data["HICBC start"]:
-                total_tax -= total_child_benefit
+                HICBC = 0
             elif gross_income > relevant_data["HICBC end"]:
-                total_tax -= 0
+                HICBC = total_child_benefit
             else:
-                child_benefit_reduction = (gross_income - relevant_data["HICBC start"]) / (relevant_data["HICBC end"] - relevant_data["HICBC start"])
-                total_tax -= total_child_benefit * (1 - child_benefit_reduction)
+                hicbc_step = (relevant_data["HICBC end"] - relevant_data["HICBC start"]) / 100
+                number_of_steps = (gross_income - relevant_data["HICBC start"]) / hicbc_step
+
+                HICBC = total_child_benefit * number_of_steps / 100
                 
+        else:
+            HICBC = 0
+            
+        total_tax += HICBC
+            
+        
+        if relevant_dataset == "rUK 2024-25":
+            print(gross_income, HICBC, total_tax)
+            
         # give childcare subsidy (modelled as a negative tax, not technically correct but gives right result)
         if INCLUDE_CHILDCARE and CHILDREN > 0:
             if relevant_data["childcare min earnings"] < gross_income < relevant_data["childcare max earnings"]:
