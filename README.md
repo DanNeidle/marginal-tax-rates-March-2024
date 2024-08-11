@@ -5,7 +5,7 @@ Updated as at March 2024.
 
 The previous Excel spreadsheet had become unmanageable and is now replaced with some simple Python code.
 
-(c) Dan Neidle of Tax Policy Associates Ltd
+(c) Dan Neidle of Tax Policy Associates Ltd, 2024
 
 Licensed under the GNU General Public License, version 2
 
