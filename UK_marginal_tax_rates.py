@@ -24,7 +24,7 @@ INCLUDE_MARRIAGE_ALLOWANCE = False   # also swamps all other marginal rate effec
 PLOT_GROSS_VS_NET = True   # highly recommended if showing childcare subsidy or marriage allowance
 
 # Constants
-RESOLUTION = 100        # the amount by which gross salary is incremented
+RESOLUTION = 100        # the amount by which gross salary is incremented. Note this is also used as the perturbation for the marginal rate calculation.
 MAX_INCOME = 180000  
 
 DATASET_FILENAME = "UK_marginal_tax_datasets.json"
@@ -97,10 +97,6 @@ def calculate_tax_and_ni(gross_income, relevant_dataset, tax_type, do_child_bene
             HICBC = 0
             
         total_tax += HICBC
-            
-        
-        if relevant_dataset == "rUK 2024-25":
-            print(gross_income, HICBC, total_tax)
             
         # give childcare subsidy (modelled as a negative tax, not technically correct but gives right result)
         if INCLUDE_CHILDCARE and CHILDREN > 0:
